@@ -67,12 +67,22 @@ class MainActivity : AppCompatActivity() {
 
         val message = when {
             age==null -> "Ingresa tu edad"
-            age>18 -> "Eres mayor de edad"
-            age<18 -> "Eres menor de edad"
+            age in 19 .. 30 -> "Eres mayor de edad Joven"
+            age < 18  || age >80 -> {
+                var msg:String = verifyPertissionTheCondution()
+                "$msg"
+            }
+            age > 30 -> "Eres mayor de edad madur@ "
             else -> "Tienes justo 18 años"
         }
         tvMessage.text = message
 
+    }
+
+
+    private fun verifyPertissionTheCondution() :String{
+        val msg:String = "Lo siento no pudemos darte la licencia de conducir no cumples con el criterio de edad segun la ley ... "
+        return msg
     }
 
 
