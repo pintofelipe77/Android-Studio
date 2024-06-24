@@ -65,26 +65,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateMessageAge(age:Int?, tvMessage:TextView){
 
-        var message = ""
 
-        if(age==null){
-            message = "Ingresa tu edad"
-        }else if (age < 0 ||age > 150){
-            message = "Ingresa una edad validad"
-        }else {
 
-             message = when {
-
-                age in 19..30 -> "Eres mayor de edad Joven"
-                age < 18 || age > 80 -> {
-                    var msg: String = verifyPertissionTheCondution()
-                    "$msg"
-                }
-
-                age > 30 -> "Eres mayor de edad madur@ "
-                else -> "Tienes justo 18 años"
+             val message = when {
+                 !(age!==null) -> "Introduce algo"
+                 age<0 && age > 150 -> "Ingresa una edad validad"
+                 (age in 18 .. 25) || (age in 65..75) -> "Tienes descuento en el pasaje"
+                 age<18 || age >75 -> "Viajas gratis"
+                 else -> "A pagar el pase completo"
             }
-        }
+
 
         tvMessage.text = message
 
